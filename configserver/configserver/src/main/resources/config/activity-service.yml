@@ -22,7 +22,7 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://fitness-backend-2-0omo.onrender.com/eureka/
+      defaultZone: https://fitness-backend-1-3y57.onrender.com/eureka/
   instance:
     prefer-ip-address: true
 
