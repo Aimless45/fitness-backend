@@ -1,35 +1,37 @@
 spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
   data:
     mongodb:
       uri: ${MONGO_AI_URI}
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer:
-      group-id: activity-processor-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.use.type.headers: false
-        spring.json.value.default.type: com.fitness.aiservice.model.Activity
-        spring.json.trusted.packages: "*"
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: activity-processor-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring.json.use.type.headers: false
+#        spring.json.value.default.type: com.fitness.aiservice.model.Activity
+#        spring.json.trusted.packages: "*"
 
-kafka:
-  topic:
-    name: activity-events
+
+#kafka:
+#  topic:
+#    name: activity-events
 
 server:
-  port: 8083
+  port: ${PORT:8080}
 
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://fitness-backend-1-3y57.onrender.com/eureka/
   instance:
     prefer-ip-address: true
-    ip-address: 127.0.0.1
-    hostname: localhost
-    non-secure-port: ${server.port}
+
 
 gemini:
   api:

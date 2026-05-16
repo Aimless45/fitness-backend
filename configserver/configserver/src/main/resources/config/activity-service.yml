@@ -1,16 +1,11 @@
 spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
+
   data:
     mongodb:
       uri: ${MONGO_ACTIVITY_URI}
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-kafka:
-  topic:
-    name: activity-events
-
 
 server:
   port: ${PORT:8080}
@@ -23,7 +18,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: https://fitness-backend-1-3y57.onrender.com/eureka/
+
   instance:
     prefer-ip-address: true
-
-
