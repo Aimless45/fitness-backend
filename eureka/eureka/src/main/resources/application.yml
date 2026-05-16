@@ -2,12 +2,10 @@ spring:
   application:
     name: eureka
 
+server:
+  port: ${PORT:8761}
+
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-
-server:
-  port: 8761
-
-
